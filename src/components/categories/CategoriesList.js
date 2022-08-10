@@ -35,7 +35,7 @@ export const CategoriesList = () => {
           </tbody>
         </table>
       </div>
-      <div class="column">
+      <div className="column">
         <CategoryForm loadCategories={loadCategories} />
       </div>
     </div>

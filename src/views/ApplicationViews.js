@@ -33,9 +33,9 @@ export const ApplicationViews = ({ token, setToken, setUserId, userId }) => {
         <Route path="/editpost/:postId" element={<EditPost />} />
 
         <Route path="/categories" element={<CategoriesList />} />
-        <Route path="/comments/:postId" element={<CommentsList />} />
-        <Route path="posts/:postId/" element={<PostDetails userId={userId} />} />
-        <Route path="/addcomment/:postId" element={<CommentForm />} />
+        <Route path="posts/:postId/comments" element={<CommentsList />} />
+        <Route path="posts/:postId" element={<PostDetails userId={userId} />} />
+        <Route path="posts/:postId/add-comment" element={<CommentForm />} />
       </Route>
     </Routes>
   </main>

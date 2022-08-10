@@ -42,9 +42,9 @@ export const PostDetails = ({ userId }) => {
           <time >{post.publication_date}</time>
         </div>
       </div>
-      <footer class="card-footer">
-        <Link to={`/comments/${postId}`} className="card-footer-item">View Comments</Link>
-        <Link to={`/addcomment/${postId}`} className="card-footer-item">Add Comments</Link>
+      <footer className="card-footer">
+        <Link to={`/posts/${postId}/comments`} className="card-footer-item">View Comments</Link>
+        <Link to={`/posts/${postId}/add-comment`} className="card-footer-item">Add Comments</Link>
         {
           userId === post.user?.id ? <Link to={`/editpost/${postId}`} className="card-footer-item">Edit</Link> : <></>
         }
