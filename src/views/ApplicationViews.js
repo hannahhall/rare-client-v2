@@ -5,7 +5,7 @@ import { Authorized } from "./Authorized"
 import { Users } from "../components/users/Users"
 import { UserDetails } from "../components/users/UserDetails"
 import { TagContainer } from "../components/tags/TagContainer"
-import { Categories } from "../components/categories/Categories"
+import { CategoriesList } from "../components/categories/CategoriesList"
 import { MyPost } from "../components/posts/MyPost"
 import {PostDetails} from "../components/posts/PostDetails"
 import { PostForm } from "../components/posts/PostForm"
@@ -32,7 +32,7 @@ export const ApplicationViews = ({ token, setToken, setUserId, userId }) => {
         <Route path="/newpost" element={<PostForm />} />
         <Route path="/editpost/:postId" element={<EditPost />} />
 
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories" element={<CategoriesList />} />
         <Route path="/comments/:postId" element={<CommentsList />} />
         <Route path="posts/:postId/" element={<PostDetails userId={userId} />} />
         <Route path="/addcomment/:postId" element={<CommentForm />} />
