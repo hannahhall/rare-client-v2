@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react"
-import { getAllCategories } from "../../managers/CategoryManager"
-import { CategoryForm } from "./CategoryForm"
+import { getAllTags } from "../../managers/TagManager"
+import { TagForm } from "./TagForm"
 
-export const CategoriesList = () => {
-  const [categories, setCategories] = useState([])
+export const TagList = () => {
+  const [tags, setTags] = useState([])
 
-  const loadCategories = () => {
-    getAllCategories().then(categoriesData => setCategories(categoriesData))
+  const loadTags = () => {
+    getAllTags().then(tagsData => setTags(tagsData))
   }
 
   useEffect(() => {
-    loadCategories()
+    loadTags()
   }, [])
 
   return <section className="section">
@@ -19,15 +19,15 @@ export const CategoriesList = () => {
         <table className="table is-fullwidth">
           <thead>
             <tr>
-              <th>Categories</th>
+              <th>Tags</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {
-              categories.map(category => (
-                <tr key={category.id}>
-                  <td>{category.label}</td>
+              tags.map(tag => (
+                <tr key={tag.id}>
+                  <td>{tag.label}</td>
                   <td>Edit</td>
                 </tr>
               ))
@@ -36,7 +36,7 @@ export const CategoriesList = () => {
         </table>
       </div>
       <div className="column">
-        <CategoryForm loadCategories={loadCategories} />
+        <TagForm loadTags={loadTags} />
       </div>
     </div>
   </section>
