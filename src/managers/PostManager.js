@@ -7,7 +7,7 @@ export const getAllPosts = () => {
     .then(res => res.json())
 };
 
-export const saveNewPost = (post) => {
+export const createPost = (post) => {
   return fetch("http://localhost:8088/posts", {
     method: "POST",
     headers: {
