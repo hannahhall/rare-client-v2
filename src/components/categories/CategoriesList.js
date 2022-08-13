@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getAllCategories } from "../../managers/CategoryManager"
+import { getAllCategories, deleteCategory } from "../../managers/CategoryManager"
 import { CategoryForm } from "./CategoryForm"
 
 export const CategoriesList = () => {
@@ -12,6 +12,10 @@ export const CategoriesList = () => {
   useEffect(() => {
     loadCategories()
   }, [])
+
+  const handleDelete = (categoryId) => {
+    deleteCategory(categoryId).then(loadCategories)
+  }
 
   return <section className="section">
     <div className="columns">
@@ -28,7 +32,10 @@ export const CategoriesList = () => {
               categories.map(category => (
                 <tr key={category.id}>
                   <td>{category.label}</td>
-                  <td>Edit</td>
+                  <td><div className="buttons">
+                    <button className="button is-warning" onClick={() => {}}>edit</button>
+                    <button className="button is-danger" onClick={() => { handleDelete(category.id) }}>delete</button>
+                  </div></td>
                 </tr>
               ))
             }

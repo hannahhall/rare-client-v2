@@ -17,3 +17,12 @@ export const createCategory = (category) => {
       body: JSON.stringify(category)
   })
 }
+
+export const deleteCategory = (categoryId) => {
+  return fetch(`http://localhost:8088/categories/${categoryId}`, {
+    method: "DELETE",
+    headers: {
+      // 'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    }
+  })
+}
