@@ -46,6 +46,7 @@ export const PostForm = () => {
     newPost[event.target.name] = event.target.value
     setPost(newPost)
   }
+  
 
   return (
     <section className="section">
