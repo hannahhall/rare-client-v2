@@ -4,6 +4,7 @@ import { CategoryForm } from "./CategoryForm"
 
 export const CategoriesList = () => {
   const [categories, setCategories] = useState([])
+  const [editCategory, setEditCategory] = useState({ label: '' })
 
   const loadCategories = () => {
     getAllCategories().then(categoriesData => setCategories(categoriesData))
@@ -33,7 +34,7 @@ export const CategoriesList = () => {
                 <tr key={category.id}>
                   <td>{category.label}</td>
                   <td><div className="buttons">
-                    <button className="button is-warning" onClick={() => {}}>edit</button>
+                    <button className="button is-warning" onClick={() => { setEditCategory(category) }}>edit</button>
                     <button className="button is-danger" onClick={() => { handleDelete(category.id) }}>delete</button>
                   </div></td>
                 </tr>
@@ -43,7 +44,7 @@ export const CategoriesList = () => {
         </table>
       </div>
       <div className="column">
-        <CategoryForm loadCategories={loadCategories} />
+        <CategoryForm loadCategories={loadCategories} category={editCategory} setCategory={setEditCategory} />
       </div>
     </div>
   </section>

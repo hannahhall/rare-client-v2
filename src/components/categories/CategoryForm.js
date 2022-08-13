@@ -1,18 +1,16 @@
-import { useState } from "react"
-import { createCategory } from "../../managers/CategoryManager"
+import { createCategory, updateCategory } from "../../managers/CategoryManager"
 
-export const CategoryForm = ({ loadCategories, initialCategory = {} }) => {
-
-  const [category, setCategory] = useState(initialCategory)
-
+export const CategoryForm = ({ loadCategories, category, setCategory }) => {
   const saveCategoryEvent = (event) => {
     event.preventDefault()
-
-    createCategory(category)
-      .then((data) => {
+    if (category.id) {
+      updateCategory(category).then(loadCategories)
+    } else {
+      createCategory(category).then((data) => {
         loadCategories(data)
-        setCategory({label: ''})
+        setCategory({ label: '' })
       })
+    }
   }
 
   return (
@@ -21,18 +19,18 @@ export const CategoryForm = ({ loadCategories, initialCategory = {} }) => {
         <label className="label">New Category:</label>
         <div className="control">
 
-        <input
-          required
-          type="text"
-          className="input"
-          value={category.label}
-          onChange={
-            (evt) => {
-              const copy = { ...category }
-              copy.label = evt.target.value
-              setCategory(copy)
-            }
-          } />
+          <input
+            required
+            type="text"
+            className="input"
+            value={category.label}
+            onChange={
+              (evt) => {
+                const copy = { ...category }
+                copy.label = evt.target.value
+                setCategory(copy)
+              }
+            } />
         </div>
       </div>
       <button
